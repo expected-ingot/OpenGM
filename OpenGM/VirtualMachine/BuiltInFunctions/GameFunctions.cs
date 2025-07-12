@@ -466,7 +466,23 @@ public static class GameFunctions
         return InstanceManager.instance_create_depth(x, y, depth, obj);
     }
 
-    // instance_create_layer
+    [GMLFunction("instance_create_layer")]
+    public static object instance_create_layer(object?[] args)
+    {
+        // x, y, layerId, obj
+        var x = args[0].Conv<double>();
+        var y = args[1].Conv<double>();
+        var obj = args[3].Conv<int>();
+
+        var layerId = args[2];
+        var layer = RoomManager.CurrentRoom.GetLayer(layerId);
+        var depth = 0;
+        if (layer != null)
+        {
+            depth = layer.Depth;
+        }
+        return InstanceManager.instance_create_depth(x, y, depth, obj);
+    }
     // instance_copy
 
     [GMLFunction("instance_change")]

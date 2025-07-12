@@ -456,7 +456,11 @@ namespace OpenGM.VirtualMachine.BuiltInFunctions
             return null;
         }
 
-        // gpu_set_texfilter
+        [GMLFunction("gpu_set_texfilter", GMLFunctionFlags.Stub)]
+        public static object? gpu_set_texfilter(object?[] args)
+        {
+            return null;
+        }
 
         [GMLFunction("gpu_set_texfilter_ext", GMLFunctionFlags.Stub)]
         public static object? gpu_set_texfilter_ext(object?[] args)
@@ -513,7 +517,11 @@ namespace OpenGM.VirtualMachine.BuiltInFunctions
 
         // gpu_get_alphatestenable
         // gpu_get_alphatestref
-        // gpu_get_texfilter
+        [GMLFunction("gpu_get_texfilter", GMLFunctionFlags.Stub)]
+        public static object? gpu_get_texfilter(object?[] args)
+        {
+            return true;
+        }
         // gpu_get_texfilter_ext
         // gpu_get_texrepeat
         // gpu_get_texrepeat_ext

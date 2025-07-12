@@ -7,6 +7,7 @@ using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using System;
 using System.Xml.Linq;
+using System.Drawing;
 
 namespace OpenGM.VirtualMachine.BuiltInFunctions
 {
@@ -118,7 +119,19 @@ namespace OpenGM.VirtualMachine.BuiltInFunctions
         // window_set_max_width
         // window_set_min_height
         // window_set_max_height
-        // window_set_position
+        [GMLFunction("window_set_position")]
+        public static object? window_set_position(object?[] args)
+        {
+            var x = args[0].Conv<int>();
+            var y = args[1].Conv<int>();
+
+            //DebugLog.Log($"window_set_position {w} {h}");
+
+            CustomWindow.Instance.X = x;
+            CustomWindow.Instance.Y = y;
+
+            return null;
+        }
 
         [GMLFunction("window_set_size")]
         public static object? window_set_size(object?[] args)
@@ -278,18 +291,53 @@ namespace OpenGM.VirtualMachine.BuiltInFunctions
             return (bByte << 16) + (gByte << 8) + rByte;
         }
 
-        // color_get_red
-        // colour_get_red
-        // color_get_green
-        // colour_get_green
-        // color_get_blue
-        // colour_get_blue
-        // color_get_hue
-        // colour_get_hue
-        // color_get_saturation
-        // colour_get_saturation
-        // color_get_value
-        // colour_get_value
+        [GMLFunction("color_get_red")]
+        [GMLFunction("colour_get_red")]
+        public static object color_get_red(params object?[] args)
+        {
+            return args[0].Conv<int>() & 0xFF;
+        }
+        [GMLFunction("color_get_green")]
+        [GMLFunction("colour_get_green")]
+        public static object color_get_green(params object?[] args)
+        {
+            return (args[0].Conv<int>() >> 8) & 0xFF;
+        }
+        [GMLFunction("color_get_blue")]
+        [GMLFunction("colour_get_blue")]
+        public static object color_get_blue(params object?[] args)
+        {
+            return (args[0].Conv<int>() >> 16) & 0xFF;
+        }
+        [GMLFunction("color_get_hue")]
+        [GMLFunction("colour_get_hue")]
+        public static object color_get_hue(params object?[] args)
+        {
+            var gml_col = args[0].Conv<int>();
+            var oneBytes = BitConverter.GetBytes(gml_col);
+            var color = Color.FromArgb(oneBytes[0] + oneBytes[1] + oneBytes[2]);
+            return color.GetHue();
+        }
+
+        [GMLFunction("color_get_saturation")]
+        [GMLFunction("colour_get_saturation")]
+        public static object color_get_saturation(params object?[] args)
+        {
+            var gml_col = args[0].Conv<int>();
+            var oneBytes = BitConverter.GetBytes(gml_col);
+            var color = Color.FromArgb(oneBytes[0] + oneBytes[1] + oneBytes[2]);
+            return color.GetSaturation();
+        }
+
+        [GMLFunction("color_get_value")]
+        [GMLFunction("colour_get_value")]
+        public static object color_get_value(params object?[] args)
+        {
+            var gml_col = args[0].Conv<int>();
+            var oneBytes = BitConverter.GetBytes(gml_col);
+            var color = Color.FromArgb(oneBytes[0] + oneBytes[1] + oneBytes[2]);
+            return color.GetBrightness();
+        }
 
         [GMLFunction("merge_color")]
         [GMLFunction("merge_colour")]
@@ -1750,6 +1798,12 @@ namespace OpenGM.VirtualMachine.BuiltInFunctions
             var enabled = args[0].Conv<bool>();
 
             return null;
+        }
+
+        [GMLFunction("application_surface_is_enabled")]
+        public static object? application_surface_is_enabled(object?[] args)
+        {
+            return SurfaceManager.AppSurfaceEnabled;
         }
 
         // skeleton stuff

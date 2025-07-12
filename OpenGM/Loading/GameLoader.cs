@@ -163,44 +163,68 @@ public static class GameLoader
 
             foreach (var (subtype, codeId) in storage.AlarmScriptIDs)
             {
-                asset.AlarmScript[subtype] = Codes[codeId];
+                if (codeId != -1) // obj_sparkle_elevator
+                {
+                    asset.AlarmScript[subtype] = Codes[codeId];
+                }
             }
 
             foreach (var (subtype, codeId) in storage.StepScriptIDs)
             {
-                asset.StepScript[subtype] = Codes[codeId];
+                if (codeId != -1) // Nubby's Number Factory obj_CafeMGMT
+                {
+                    asset.StepScript[subtype] = Codes[codeId];
+                }
             }
 
             foreach (var (subtype, codeId) in storage.CollisionScriptIDs)
             {
-                asset.CollisionScript[subtype] = Codes[codeId];
+                if (codeId != -1)
+                {
+                    asset.CollisionScript[subtype] = Codes[codeId];
+                }
             }
 
             foreach (var (subtype, codeId) in storage.KeyboardScriptIDs)
             {
-                asset.KeyboardScripts[subtype] = Codes[codeId];
+                if (codeId != -1)
+                {
+                    asset.KeyboardScripts[subtype] = Codes[codeId];
+                }
             }
 
             // Mouse
 
             foreach (var (subtype, codeId) in storage.OtherScriptIDs)
             {
-                asset.OtherScript[subtype] = Codes[codeId];
+                if (codeId != -1) // MINDWAVE demo cutscene_controller
+                {
+                    asset.OtherScript[subtype] = Codes[codeId];
+                }
             }
 
             foreach (var (subtype, codeId) in storage.DrawScriptIDs)
             {
-                asset.DrawScript[subtype] = Codes[codeId];
+                if (codeId != -1) // MINDWAVE demo master
+                {
+                    asset.DrawScript[subtype] = Codes[codeId];
+                }
             }
 
             foreach (var (subtype, codeId) in storage.KeyPressScriptIDs)
             {
-                asset.KeyPressScripts[subtype] = Codes[codeId];
+                if (codeId != -1) // MINDWAVE demo master
+                {
+                    asset.KeyPressScripts[subtype] = Codes[codeId];
+                }
             }
 
             foreach (var (subtype, codeId) in storage.KeyReleaseScriptIDs)
             {
-                asset.KeyReleaseScripts[subtype] = Codes[codeId];
+                if (codeId != -1)
+                {
+                    asset.KeyReleaseScripts[subtype] = Codes[codeId];
+                }
             }
 
             // Trigger

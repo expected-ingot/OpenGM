@@ -28,7 +28,7 @@ public class CustomWindow : GameWindow
         set
         {
             _x = value;
-            // UpdatePositionResolution();
+            UpdatePositionResolution();
         }
     }
 
@@ -39,7 +39,7 @@ public class CustomWindow : GameWindow
         set
         {
             _y = value;
-            // UpdatePositionResolution();
+            UpdatePositionResolution();
         }
     }
 

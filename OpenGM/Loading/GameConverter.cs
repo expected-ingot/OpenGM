@@ -428,7 +428,16 @@ public static class GameConverter
                         var parameters = parameterString.Split(' ');
                         if (parameters.Length == 1)
                         {
-                            instruction.IntData = int.Parse(parameterString);
+                            if (int.TryParse(parameterString, out var intResult))
+                            {
+                                instruction.IntData = intResult;
+                            }
+                            else
+                            {
+                                instruction.StringData = parameterString;
+                                shouldGetVariableInfo = true;
+                            }
+
                         }
                         else
                         {

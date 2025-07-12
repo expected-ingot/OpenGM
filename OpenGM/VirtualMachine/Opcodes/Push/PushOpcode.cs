@@ -326,6 +326,10 @@ public static partial class VMExecutor
                 PushOther(variableName);
                 return (ExecutionResult.Success, null);
             }
+            else if (variableType == VariableType.Static)
+            {
+                //
+            } 
             else if (variableType == VariableType.Stacktop)
             {
                 PushStacktop(variableName);

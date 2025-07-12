@@ -7,7 +7,11 @@ namespace OpenGM.VirtualMachine.BuiltInFunctions
     public static class SoundFunctions
     {
         // MCI_command
-        // audio_listener_position
+        [GMLFunction("audio_listener_position", GMLFunctionFlags.Stub)]
+        public static object? audio_listener_position(object?[] args)
+        {
+            return null;
+        }
         // audio_listener_velocity
         // audio_listener_orientation
         // audio_emitter_position
